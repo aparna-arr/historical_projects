@@ -1,0 +1,15 @@
+Board, controller, pieces
+controller knows which spaces are valid and invalid.
+Asks piece for a move: randomize pieces and ask for a move from first from
+shuffled list.
+
+Pieces can generate valid ideal moves
+-> given a list of unoccupied spaces? Then generate a valid move, else return
+NULL (no valid move possible for that piece). 
+-> determine which of these spaces could be a valid move, shuffle, return the
+move.
+
+global shuffle function: given an array and a size, return a shuffled array
+(fisher-?? shuffle)
+
+controller recalculates open spaces (or removes)

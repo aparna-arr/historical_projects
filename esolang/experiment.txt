@@ -1,0 +1,18 @@
+Programming language based on experimental mouse breeding
+Start out with 2 default mice, both of value 1
+To create other values, must breed. Offspring are addition of parent mice.
+Always 2 offspring. 
+To print a value as a char,, kill mouse
+to read a value, "import" mouse (as in from another facility)
+You can have multiple facilities?
+to subtract, mice fight. Bigger mouse wins but sustains injuries, thus is
+equal to Big - Small. Small mouse dies, but is not output?
+Mice have numeric labels and generation labels. Imported mice always have
+generation label 0
+Mice can die of old age after x cycles/instructions?
+OR
+mutate: by default when mice breed they do a + operation. However, you can
+mutate a mouse to do a - or / operation, where offspring = MutatedMouse -|/
+NormalMouse
+OR you can have 1 facility for each arithmetic operation?
+This does not look stack-based

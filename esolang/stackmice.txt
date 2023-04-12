@@ -1,0 +1,165 @@
+Stack-based prg language
+
+Lifespans--so decayung stack
+-> # instr or time based or cycle based?
+-> cycle based == processor cucles == MACHINE CODE 
+Machine code interpreter or perl simulation of a machine code interpreter? 
+
+"defeated" mice are 0 aka sick
+So mice must fight to get a 0 value
+fight = subtraction
+breed = addition
+clone (fewer life cycles: 1/2)
+dead mice are output
+in a long program, how to avoid this becoming a problem?
+cleanup: anticipate death of mice and prevent output
+cleanup is an atomic instruction which cleans up the next mouse death
+
+mutate = assign random number 1-10 to mouse
+addition = new 2 mice added to top of stack
+subtraction = mice stay in same place in stack
+can only handle 2 mice at a time
+maybe this means on addition, choose to kill parents or kill one of new mice
+so you only have 2 mice in the end
+and new mouse goes in parent's place in stack if parent is killed
+
+basically 2 stack ptrs
+
+++ or -- ptrs
+aka move along stack
+
+a dead mouse has stack pos go to -1? or 0? how to tell it is not a sick mouse?
+==============
+swap: swap two mice's cages in stack
+
+Maybe you can have up to 4 mice per cage
+and when you swap you move the whole cage
+
+to mate only 2 mice must be in a cage
+
+to fight, at least 2 mice, but if you have > 2 then make it a "fair match" :
+biggest mouse attacks next biggest mouse for example. Can have max 2 fights in
+a cage. or maybe the other way: smallest mouse attacks next smallest mouse?
+cause the smallest one should not escape unscathed from a fight if there are 3
+mice. 
+
+By default, new mice (clones or babies) stay in same cage as parents unless
+you move them. If you do not move them then too many mice per cage == randomly
+1 is killed. Or error. Error at first.
+
+pop = remove top cage. you can have at most 1 cage "outside" aka in temp
+storage.
+
+If you have not popped a cage off, you can have up to 4 mice "outside" for
+transfering in a temporary cage.
+
+You can only push a cage if it has at least 1 mouse
+
+You have an infinite supply of temporary cages, but can handle only one at a
+time.
+
+You can pop empty cages. 
+
+A call to cleanup cleans out any dead bodies of mice. as well as the next
+mouse death at the time of the next mouse death.
+
+No mult or division or mod.
+
+A Fight is atomic, a Breed is atomic for now. A Swap is atomic, as is a Pop.
+You can move individual mice 2 at a time. 
+
+You can query if a cage IsEmpty, but cannot ask how many mice in the cage. You
+can query if a cage is > < == the cage at your second pointer. The
+stack starts with a single cage. You start with 2 mice in your temp cage.
+
+Your pointers can point at any cage in the stack, moving step-by-step, or at
+your temp cage. Moving from temp to stack puts you at the bottom of the stack.
+A pop() operation puts your topmost pointer at the top of the stack. You can
+move from stack to temp at any time.
+
+No bitwise
+
+a Kill is atomic. You can also throw away a popped cage. You can also slice
+the stack and throw away the top x cages. You cannot throw away any cage in
+the middle of the stack by itself.
+
+Nop is atomic. 
+
+Reads and writes work only in chars. 
+
+No floating points.
+
+Mutate assigns a random number 1-10. Atomic. Mutate a whole cage.
+
+Move Mice, Swap Mice, Kill Mice, Import Mice for individual mouse operations.
+All atomic.
+
+Functions:
+
+#!/research == shebang
+
+Cage operations:
+washHands : NOP
+pop : Pop() cage. Returns BOOL. Cage is "thrown away" and mice values are
+output from biggest to smallest.
+popS : Pop() cage, store at tmp. If exists a cage at tmp, discard that cage.
+Returns BOOL.
+slice [L|R] [X] [t]: requires L or R. "slices" x cages from top of stack
+and discards. 
+swapCage : swaps 2 cages at the 2 pointers. Returns BOOL.
+isEmpty [L|R] : is cage at "left"|"right" ptr (arbitrarily assigned) empty.
+Returns BOOL. if no ptr assigned, returns TRUE if both are empty and FALSE if
+at least one is not empty.
+push : pushes tmp cage to top of stack
+fight [L|R] : start a fight in a cage to the left or right. If no ptr
+assigned, have both start fights.
+breed [L|R] : Starts a breeding in a cage to the left or right ptr. If no ptr
+assigned, starts breeding in both cages. If one cage cannot breed (not enough
+mice or too many) return FALSE. 
+cleanup: waits until next mouse dies then prevents its value from being
+output. Removes all dead mouse bodies (which == 0) from all cages. 
+mutate [L|R] : mutates all mice in cage: each gets reassigned a random value
+between 1-10. 
+
+
+Mouse operations:
+clone : clone mouse in hand.
+select [0-3] : select a mouse from a cage, where 0 is the highest valued mouse
+and 3 the lowest in the cage. error if you try to select a mouse beyond the #
+in the cage. This ptr is now occupied, and this mouse is now "in hand".
+place [L|R] [t|+#|-#] : place a mouse (the mice) in the left/right/both
+hand(s) in the temp cage | a cage x values above the prev ptr location | a
+cage x values below the prev ptr location of that hand.
+kill [L|R] : kill mouse and output its value as an ASCII char. If 2 mice in hand,
+output L first then R.
+import : read an int from stdin. Can only import 2 mice at a time.   
+
+Ptr operations:
++ [L|R]: increment ptr on stack. if no ptr specified, increment both. Error if
+incremented beyond top of stack.
+- [L|R]: decrememnt ptr on stack. if no ptr specified, decrement both. Error
+  if decremented beiw bottom of stack
+t [L|R]: move ptr to tmp. if no ptr specified, move both.
+
+If holding a mouse, ptr remembers where its last stack pos was. It returns
+there if mouse is killed, if mouse is swapped the ptrs are swapped, if mouse
+is placed it is at new place.
+
+What about storing variables or other values?
+
+Store values only in mice. 
+
+Figure out if/else/loops. Use jumps.
+
+to end the program:
+endResearch
+
+> < == : compare value of mice in left hand to right hand. Or for cages: the #
+of mice in the left cage and the right cage. Return BOOL (left is > < ==
+right). if one hand is on cage and the other has a mouse, error.
+
+run [LABEL] : jmp. 
+
+:w
+
+  

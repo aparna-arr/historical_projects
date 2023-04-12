@@ -1,0 +1,16 @@
+{
+  "title": "GA-HMM",
+  "name": "ga-hmm",
+  "version": "0.0.1",
+  "description": "Interface for GA-HMM algorithm",
+  "main": "index.js",
+  "author": "Aparna Rajpurkar",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}

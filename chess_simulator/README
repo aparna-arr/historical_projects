@@ -1,0 +1,31 @@
+Chess random move simulator
+Intended as practice, does not use best algorithms at all, mostly random
+Options:
+
+Input a board (text)
+Return a random (but legal) move.
+Enter a move, have the program return one -- playing against a random computer
+basically.
+Return a list of pieces in immediate danger
+Query whether a piece is in immediate danger
+Query which pieces can take a particular board square
+Return list of legal moves for a piece
+Output option: Board with pieces marked (2D)
+	Or plain text
+Write in C++
+
+Example board:
+
+// black - lowercase, white - uppercase
+// replace with UTF-8 pieces if font is available
+
+8   h d m g k m d h
+7   n n n n n n n n
+6   . . . . . . . . 
+5   . . . . . . . . 
+4   . . . . . . . . 
+3   . . . . . . . . 
+2   N N N N N N N N
+1   H D M G K M D H
+
+    a b c d e f g h 

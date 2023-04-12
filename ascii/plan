@@ -1,0 +1,17 @@
+Genetic Algorithm terrarium
+Multiple (2) "animals"
+predator and prey evolution
+background rate of mutation
+player can introduce mutagen
+player can introduce randomly placed new animal -- predator or prey
+
+first try
+random movements, variable speeds of predator and prey
+2 degrees of mutation : percent of things mutated, max mutation
+several stats per animal : predator or prey, defense, attack, speed all of which can be mutated
+animals reproduce via probability and two animals of the same type being near to each other
+completely filling up (or filling up to some degree of unmoving animals) the terrarium results in 50 - 75% instant (random) death
+each reproduction includes crossovers
+predator next to prey results in death (of some probability depending on defense/attack of both) of prey
+randomized old age death (low)
+terrarrium of a specified, fixed size. Animals cannot move into or beyond walls, if they try they stay in the same spot

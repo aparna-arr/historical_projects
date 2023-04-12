@@ -1,0 +1,8 @@
+GA-HMM Peak Calling Algorithm browser extension
+
+css/ img/ js/ have common source code of the application
+build/ dist/ have source code and application for each distribution
+(versioning)
+
+vendor/ has platform-dependent code for each browser
+tools/ is a place to build utils

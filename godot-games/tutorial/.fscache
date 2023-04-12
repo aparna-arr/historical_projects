@@ -1,0 +1,16 @@
+::res://::1429744700
+ball.png::ImageTexture::1387233244::
+hello.scn::PackedScene::1429737614::
+icon.png::ImageTexture::1429737039::
+left_pallete.png::ImageTexture::1387233173::
+pong.scn::PackedScene::1429744581::
+processing.gd::GDScript::1429743640::
+right_pallete.png::ImageTexture::1387233198::
+sayhello.gd::GDScript::1429743640::
+sayhello.scn::PackedScene::1429743630::
+separator.png::ImageTexture::1387233336::
+::res://pong::1429743744
+ball.png::ImageTexture::1387233244::
+left_pallete.png::ImageTexture::1387233173::
+right_pallete.png::ImageTexture::1387233198::
+separator.png::ImageTexture::1387233336::
